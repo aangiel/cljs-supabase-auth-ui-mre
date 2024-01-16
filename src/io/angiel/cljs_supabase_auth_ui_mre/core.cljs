@@ -21,5 +21,3 @@
 (defn- auth []
   [:> sb-auth/Auth {:supabaseClient supabase}])
 (run auth)
-
-;;(run (fn [] [:p "hello"]))
