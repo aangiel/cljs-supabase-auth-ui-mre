@@ -2,13 +2,14 @@
   (:require
     ["@supabase/auth-ui-react" :as sb-auth]
     ["@supabase/supabase-js" :as sb]
-    [reagent.core :as r]
-    [reagent.dom :as rdom]))
+    ["react-dom/client" :refer [createRoot]]
+    [goog.dom :as gdom]
+    [reagent.core :as r]))
+
+(defonce root (createRoot (gdom/getElement "app")))
 
 (defn run [ui]
-      (rdom/render
-        [ui]
-        (js/document.getElementById "app")))
+  (.render root (r/as-element [ui])))
 
 (def supabase (sb/createClient
                 "http://127.0.0.1:54321"
@@ -17,6 +18,8 @@
 
 (.log js/console supabase)
 
-(run (fn [] [:f> [sb-auth/Auth {:supabaseClient supabase}]]))
+(defn- auth []
+  [:> sb-auth/Auth {:supabaseClient supabase}])
+(run auth)
 
 ;;(run (fn [] [:p "hello"]))
