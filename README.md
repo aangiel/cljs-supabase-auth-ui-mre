@@ -6,3 +6,5 @@ Thread: https://clojurians.slack.com/archives/C03S1L9DN/p1705405018021469
 npm install
 shadow-cljs watch app
 ```
+
+http://localhost:8000/
