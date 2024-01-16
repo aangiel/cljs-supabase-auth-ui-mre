@@ -16,8 +16,6 @@
                 "could be even like that, you don't need to provide one
                 just for creating client"))
 
-(.log js/console supabase)
-
 (defn- auth []
   [:> sb-auth/Auth {:supabaseClient supabase}])
 (run auth)
